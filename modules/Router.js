@@ -23,7 +23,8 @@ class Router extends Component {
     onError: func,
     onUpdate: func,
     parseQueryString: func,
-    stringifyQuery: func
+    stringifyQuery: func,
+    componentProps: object
   }
 
   constructor(props, context) {
@@ -79,7 +80,7 @@ class Router extends Component {
 
   render() {
     let { location, routes, params, components } = this.state
-    let { createElement } = this.props
+    let { createElement, componentProps } = this.props
 
     if (location == null)
       return null // Async match
@@ -90,7 +91,8 @@ class Router extends Component {
       location,
       routes,
       params,
-      components
+      components,
+      componentProps
     })
   }
 

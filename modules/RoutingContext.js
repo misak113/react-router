@@ -17,7 +17,8 @@ class RoutingContext extends Component {
     location: object.isRequired,
     routes: array.isRequired,
     params: object.isRequired,
-    components: array.isRequired
+    components: array.isRequired,
+    componentProps: object
   }
 
   static defaultProps = {
@@ -41,7 +42,7 @@ class RoutingContext extends Component {
   }
 
   render() {
-    const { history, location, routes, params, components } = this.props
+    const { history, location, routes, params, components, componentProps } = this.props
     let element = null
 
     if (components) {
@@ -57,7 +58,8 @@ class RoutingContext extends Component {
           params,
           route,
           routeParams,
-          routes
+          routes,
+          ...componentProps
         }
 
         if (isReactChildren(element)) {
